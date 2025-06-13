@@ -8,28 +8,34 @@
       background: linear-gradient(to top, #e0f7ff, #f0fbff);
       text-align: center;
       font-family: 'Comic Sans MS', cursive, sans-serif;
-      padding-top: 50px;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     #message {
-      display: none;
       font-size: 28px;
       font-weight: bold;
       color: #003366;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      display: none;
     }
 
     #candleWrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      position: relative;
     }
 
     #candle {
       width: 140px;
       height: 360px;
       background: #f0f0f0;
-      margin-top: 10px;
       position: relative;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
