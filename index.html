@@ -7,25 +7,19 @@
             background: linear-gradient(to top, #ffe0f0, #fff6f9);
             text-align: center;
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            padding-top: 0;
-            margin: 0;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding-top: 50px;
         }
         #message, #happyBirthday {
             display: none;
         }
         #candle {
-            width: 100px;
+            width: 120px;
             height: 300px;
             background: #ff6666;
+            margin: 60px auto 20px auto;
             position: relative;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
         }
         #flame {
             width: 60px;
@@ -34,96 +28,119 @@
             border-radius: 50%;
             position: absolute;
             top: -60px;
-            left: 20px;
+            left: 30px;
             animation: flicker 0.2s infinite;
         }
         @keyframes flicker {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
-        }
-        #ribbonWrapper {
-            display: none;
-            position: relative;
-            width: 70%;
-            margin: 20px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform 1.5s ease;
-            font-style: italic;
-        }
-        #ribbon {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 50px;
-            background: linear-gradient(90deg, #ffb6c1, #ff69b4);
-            border-radius: 15px 15px 0 0;
-            overflow: hidden;
-        }
-        #shine {
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
-            animation: shineMove 2s ease-in-out forwards;
-        }
-        @keyframes shineMove {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        #longMessage {
-            font-family: Georgia, serif;
-            font-size: 20px;
-            color: #333;
-            text-align: left;
-            white-space: pre-wrap;
-        }
-        #happyBirthday {
-            font-size: 48px;
-            color: #ff3399;
-            margin-top: 20px;
-            transition: transform 1s ease, opacity 1s ease;
-        }
-    </style>
+        }#cardContainer {
+        display: none;
+        width: 80%;
+        margin: 30px auto;
+        perspective: 1000px;
+    }
+
+    #card {
+        background: #fff0f5;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        transform-style: preserve-3d;
+        transform: rotateX(90deg);
+        transition: transform 1s ease;
+        overflow: hidden;
+        position: relative;
+        padding: 40px 30px;
+    }
+
+    #card.open {
+        transform: rotateX(0deg);
+    }
+
+    #ribbon {
+        width: 100%;
+        height: 20px;
+        background: linear-gradient(90deg, #ff99cc, #ff66b2);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+    #shine {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75px;
+        width: 50px;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: skewX(-20deg);
+        animation: shine 2s ease-in-out forwards;
+    }
+
+    @keyframes shine {
+        0% { left: -75px; }
+        100% { left: 100%; }
+    }
+
+    #longMessage {
+        font-family: Georgia, serif;
+        font-size: 20px;
+        margin: 0;
+        color: #333;
+        text-align: left;
+        white-space: pre-wrap;
+        font-style: italic;
+    }
+
+    #happyBirthday {
+        font-size: 48px;
+        color: #ff3399;
+        margin-top: 20px;
+        transition: transform 1s ease, opacity 1s ease;
+    }
+</style>
+
 </head>
 <body><audio id="birthdaySong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
 <div id="message">Make a wish and blow the candle!</div>
 <div id="candle">
     <div id="flame"></div>
-</div><div id="ribbonWrapper">
-    <div id="ribbon">
-        <div id="shine"></div>
-    </div>
-    <div id="longMessage">
-Hii — I’m sending this a little late po tonight, hoping not to disturb you on your special day. :‹ If I did, I’m sorii.. Pero I made a quiet promise to myself to greet you — no matter where we stand now.^Happy birthday, Kyle. ^^
+</div>
 
-I wish you allll the best — may life place in your hands every dream your heart has ever dared to hold. May you always find the strength to walk through the storms, even when you have to walk alone. Do it for the child within you — the one who once dreamed without fear, who spoke of endless possibilities, and who believed the world was his. :‹
+<div id="cardContainer">
+    <div id="card">
+        <div id="ribbon">
+            <div id="shine"></div>
+        </div>
+        <div id="longMessage">
+
+Hii — I’m sending this a little late po tonight, hoping not to disturb you on your special day. :› If I did, I’m sorii.. Pero I made a quiet promise to myself to greet you — no matter where we stand now.^
+
+Happy birthday, Kyle. ^^
+
+I wish you allll the best — may life place in your hands every dream your heart has ever dared to hold. May you always find the strength to walk through the storms, even when you have to walk alone. Do it for the child within you — the one who once dreamed without fear, who spoke of endless possibilities, and who believed the world was his. :›
 
 Though time has pulled us in different directions na po, I still carry every moment we shared. If it’s alright, let me carry them softly, like fading echoes in my heart, until they become gentle reminders of who we once were.
 
 And congratulations po on all that you’ve achieved. :››› I know you’re moving forward now, and though my words may be small in your journey, I am deeply grateful. Thank you for everything.
 
-This won’t be long — pero I read something once that stayed with me. It was from a book I stumbled upon po late at night, “The Strength in Our Roots”: “Even the strongest trees were once fragile seeds that dared to break through the earth.” And I hope... You continue to be like that tree — rising, enduring, and reaching for the light no matter howw.... heavy the winds may blow. :‹
+This won’t be long — pero I read something once that stayed with me. It was from a book I stumbled upon po late at night, “The Strength in Our Roots”: “Even the strongest trees were once fragile seeds that dared to break through the earth.” And I hope... You continue to be like that tree — rising, enduring, and reaching for the light no matter howw.... heavy the winds may blow. :›
 
 And when you finally stand upon the peak of everything you’ve worked for po — May you find yourself in places where your soul is at peace, surrounded by people who see the rare light within you, and held by a love that never asks you to be anything but your truest self. : )
 
 — from the one who once stood close, and from afar, will carry the quiet privilege of having known you.
 
-Megan :⨩
+Megan :⟩
 
-(P.S. I hope okay lang siya — I’m still learning to code, heh:).. pero I wanted to make this for you. : ) </div>
+(P.S. I hope okay lang siya — I’m still learning to code, heh:).. pero I wanted to make this for you. : ) </div> </div> </div>
 
-</div><div id="happyBirthday">Happy Birthday, po!:‹ </div><script>
+<div id="happyBirthday">Happy Birthday, po!:› </div>
+
+<script>
     window.onload = function () {
         const audio = document.getElementById("birthdaySong");
         const message = document.getElementById("message");
@@ -141,11 +158,11 @@ Megan :⨩
         flame.style.opacity = 0;
 
         setTimeout(() => {
-            const ribbonWrapper = document.getElementById("ribbonWrapper");
-            ribbonWrapper.style.display = "block";
-            setTimeout(() => {
-                ribbonWrapper.style.transform = "scaleY(1)";
-            }, 1000);
+            const card = document.getElementById("cardContainer");
+            card.style.display = "block";
+            requestAnimationFrame(() => {
+                document.getElementById("card").classList.add("open");
+            });
         }, 2000);
 
         setTimeout(() => {
@@ -192,5 +209,7 @@ Megan :⨩
             alert('Microphone access denied. Please allow microphone to blow the candle.');
         });
     }
-</script></body>
-  </html>
+</script>
+
+</body>
+</html>
