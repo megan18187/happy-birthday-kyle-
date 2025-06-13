@@ -1,141 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Happy Birthday, Kyle!</title>
-    <style>
-        body {
-            background: linear-gradient(to top, #cce6ff, #e6f2ff);
-            text-align: center;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            margin: 0;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+  <meta charset="UTF-8" />
+  <title>Happy Birthday, Kyle!</title>
+  <style>
+    body {
+      background: linear-gradient(to top, #e0f7ff, #f0fbff);
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      padding-top: 50px;
+    }
 
-        #message {
-            font-size: 28px;
-            font-weight: bold;
-            color: #003366;
-            margin-bottom: 20px;
-        }
+    #message {
+      display: none;
+      font-size: 28px;
+      font-weight: bold;
+      color: #003366;
+      margin-bottom: 10px;
+    }
 
-        #happyBirthday {
-            display: none;
-            font-size: 48px;
-            color: #001f4d;
-            margin-top: 30px;
-            transition: transform 1s ease, opacity 1s ease;
-        }
+    #candleWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        #candle {
-            width: 150px;
-            height: 350px;
-            background: #f2f2f2;
-            margin: 0 auto;
-            position: relative;
-            border-radius: 25px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-        }
+    #candle {
+      width: 140px;
+      height: 360px;
+      background: #f0f0f0;
+      margin-top: 10px;
+      position: relative;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
 
-        #flame {
-            width: 60px;
-            height: 90px;
-            background: radial-gradient(circle, #ffff99 0%, #ff9900 60%, transparent 80%);
-            border-radius: 50% 50% 40% 40%;
-            position: absolute;
-            top: -90px;
-            left: 45px;
-            animation: flicker 0.2s infinite;
-            filter: blur(1px);
-        }
+    #flame {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at 30% 30%, #fffacd 10%, #ffa500 40%, transparent 70%);
+      border-radius: 50%;
+      position: absolute;
+      top: -70px;
+      left: 40px;
+      animation: flicker 0.2s infinite;
+    }
 
-        @keyframes flicker {
-            0% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.05) rotate(1deg); }
-            100% { transform: scale(1) rotate(-1deg); }
-        }
+    @keyframes flicker {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
 
-        #cardContainer {
-            display: none;
-            width: 80%;
-            margin: 30px auto;
-            perspective: 1000px;
-        }
+    #cardContainer {
+      display: none;
+      width: 80%;
+      margin: 30px auto;
+      perspective: 1000px;
+    }
 
-        #card {
-            background: #e6f0ff;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            transform-style: preserve-3d;
-            transform: rotateX(90deg);
-            transition: transform 1s ease;
-            overflow: hidden;
-            position: relative;
-            padding: 40px 30px;
-        }
+    #card {
+      background: #f7f3e9;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transform-style: preserve-3d;
+      transform: rotateX(-90deg);
+      transition: transform 1.5s ease, opacity 1.5s ease;
+      opacity: 0;
+      overflow: hidden;
+      position: relative;
+      padding: 40px 30px;
+    }
 
-        #card.open {
-            transform: rotateX(0deg);
-        }
+    #card.open {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
 
-        #ribbon {
-            width: 100%;
-            height: 20px;
-            background: linear-gradient(90deg, #99ccff, #66b2ff);
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
+    #ribbon {
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(90deg, #66b3ff, #3366cc);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
 
-        #shine {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -75px;
-            width: 50px;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: skewX(-20deg);
-            animation: shine 2s ease-in-out forwards;
-        }
+    #shine {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75px;
+      width: 50px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: skewX(-20deg);
+      animation: shine 2s ease-in-out forwards;
+    }
 
-        @keyframes shine {
-            0% { left: -75px; }
-            100% { left: 100%; }
-        }
+    @keyframes shine {
+      0% { left: -75px; }
+      100% { left: 100%; }
+    }
 
-        #longMessage {
-            font-family: Georgia, serif;
-            font-size: 20px;
-            margin: 0;
-            color: #333;
-            text-align: left;
-            white-space: pre-wrap;
-            font-style: italic;
-        }
-    </style>
+    #longMessage {
+      font-family: Georgia, serif;
+      font-size: 20px;
+      margin: 0;
+      color: #333;
+      text-align: left;
+      white-space: pre-wrap;
+      font-style: italic;
+    }
+
+    #happyBirthday {
+      font-size: 48px;
+      color: #003366;
+      margin-top: 20px;
+      transition: transform 1s ease, opacity 1s ease;
+    }
+  </style>
 </head>
 <body>
+  <audio id="birthdaySong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
-    <audio id="birthdaySong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-
+  <div id="candleWrapper">
     <div id="message">Make a wish and blow the candle!</div>
-
     <div id="candle">
-        <div id="flame"></div>
+      <div id="flame"></div>
     </div>
+  </div>
 
-    <div id="cardContainer">
-        <div id="card">
-            <div id="ribbon">
-                <div id="shine"></div>
-            </div>
-            <div id="longMessage">
+  <div id="cardContainer">
+    <div id="card">
+      <div id="ribbon">
+        <div id="shine"></div>
+      </div>
+      <div id="longMessage">
 Hii — I’m sending this a little late po tonight, hoping not to disturb you on your special day. :› If I did, I’m sorii.. Pero I made a quiet promise to myself to greet you — no matter where we stand now.^
 
 Happy birthday, Kyle. ^^
@@ -155,81 +157,81 @@ And when you finally stand upon the peak of everything you’ve worked for po �
 Megan :⟩
 
 (P.S. I hope okay lang siya — I’m still learning to code, heh:).. pero I wanted to make this for you. : )
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 
-    <div id="happyBirthday">Happy Birthday, po!:› </div>
+  <div id="happyBirthday">Happy Birthday, po!:› </div>
 
-    <script>
-        window.onload = function () {
-            const audio = document.getElementById("birthdaySong");
-            const message = document.getElementById("message");
-            audio.play();
+  <script>
+    window.onload = function () {
+      const audio = document.getElementById("birthdaySong");
+      const message = document.getElementById("message");
+      audio.play();
 
-            setTimeout(() => {
-                message.style.display = "block";
-                startMic();
-            }, 3000);
-        };
+      setTimeout(() => {
+        message.style.display = "block";
+        startMic();
+      }, 3000);
+    };
 
-        function blowCandle() {
-            const flame = document.getElementById("flame");
-            flame.style.transition = "opacity 2s";
-            flame.style.opacity = 0;
+    function blowCandle() {
+      const flame = document.getElementById("flame");
+      flame.style.transition = "opacity 2s";
+      flame.style.opacity = 0;
 
-            setTimeout(() => {
-                const card = document.getElementById("cardContainer");
-                card.style.display = "block";
-                requestAnimationFrame(() => {
-                    document.getElementById("card").classList.add("open");
-                });
-            }, 2000);
+      setTimeout(() => {
+        const card = document.getElementById("cardContainer");
+        card.style.display = "block";
+        requestAnimationFrame(() => {
+          document.getElementById("card").classList.add("open");
+        });
+      }, 2000);
 
-            setTimeout(() => {
-                const happy = document.getElementById("happyBirthday");
-                happy.style.display = "block";
-                happy.style.opacity = 0;
-                happy.style.transform = "scale(0.5)";
-                setTimeout(() => {
-                    happy.style.transition = "transform 1s ease, opacity 1s ease";
-                    happy.style.opacity = 1;
-                    happy.style.transform = "scale(1)";
-                }, 100);
-            }, 4000);
-        }
+      setTimeout(() => {
+        const happy = document.getElementById("happyBirthday");
+        happy.style.display = "block";
+        happy.style.opacity = 0;
+        happy.style.transform = "scale(0.5)";
+        setTimeout(() => {
+          happy.style.transition = "transform 1s ease, opacity 1s ease";
+          happy.style.opacity = 1;
+          happy.style.transform = "scale(1)";
+        }, 100);
+      }, 4000);
+    }
 
-        function startMic() {
-            navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-                .then(stream => {
-                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    const mic = audioContext.createMediaStreamSource(stream);
-                    const analyser = audioContext.createAnalyser();
-                    mic.connect(analyser);
-                    analyser.fftSize = 256;
-                    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+    function startMic() {
+      navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+        .then(stream => {
+          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          const mic = audioContext.createMediaStreamSource(stream);
+          const analyser = audioContext.createAnalyser();
+          mic.connect(analyser);
+          analyser.fftSize = 256;
+          const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
-                    function detectBlow() {
-                        analyser.getByteTimeDomainData(dataArray);
-                        let sum = 0;
-                        for (let i = 0; i < dataArray.length; i++) {
-                            const deviation = dataArray[i] - 128;
-                            sum += deviation * deviation;
-                        }
-                        const volume = Math.sqrt(sum / dataArray.length);
-                        if (volume > 20) {
-                            blowCandle();
-                            stream.getTracks().forEach(track => track.stop());
-                            return;
-                        }
-                        requestAnimationFrame(detectBlow);
-                    }
-                    detectBlow();
-                })
-                .catch(err => {
-                    alert('Microphone access denied. Please allow microphone to blow the candle.');
-                });
-        }
-    </script>
+          function detectBlow() {
+            analyser.getByteTimeDomainData(dataArray);
+            let sum = 0;
+            for (let i = 0; i < dataArray.length; i++) {
+              const deviation = dataArray[i] - 128;
+              sum += deviation * deviation;
+            }
+            const volume = Math.sqrt(sum / dataArray.length);
+            if (volume > 20) {
+              blowCandle();
+              stream.getTracks().forEach(track => track.stop());
+              return;
+            }
+            requestAnimationFrame(detectBlow);
+          }
+          detectBlow();
+        })
+        .catch(err => {
+          alert('Microphone access denied. Please allow microphone to blow the candle.');
+        });
+    }
+  </script>
 </body>
 </html>
