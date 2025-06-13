@@ -4,7 +4,7 @@
     <title>Happy Birthday, Kyle!</title>
     <style>
         body {
-            background: linear-gradient(to top, #ffe0f0, #fff6f9);
+            background: linear-gradient(to top, #a3bacc, #dbefff);
             text-align: center;
             font-family: 'Comic Sans MS', cursive, sans-serif;
             padding-top: 50px;
@@ -12,115 +12,108 @@
         #message, #happyBirthday {
             display: none;
         }
+        #message {
+            font-size: 24px;
+            margin-top: 30px;
+        }
         #candle {
-            width: 120px;
-            height: 300px;
+            width: 140px;
+            height: 340px;
             background: #ff6666;
-            margin: 60px auto 20px auto;
+            margin: 80px auto 20px auto;
             position: relative;
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(0,0,0,0.2);
         }
         #flame {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: radial-gradient(circle, #ffff00 20%, #ffa500 60%, transparent 70%);
             border-radius: 50%;
             position: absolute;
-            top: -60px;
-            left: 30px;
+            top: -70px;
+            left: 35px;
             animation: flicker 0.2s infinite;
         }
         @keyframes flicker {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
-        }#cardContainer {
-        display: none;
-        width: 80%;
-        margin: 30px auto;
-        perspective: 1000px;
-    }
-
-    #card {
-        background: #fff0f5;
-        border-radius: 15px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        transform-style: preserve-3d;
-        transform: rotateX(90deg);
-        transition: transform 1s ease;
-        overflow: hidden;
-        position: relative;
-        padding: 40px 30px;
-    }
-
-    #card.open {
-        transform: rotateX(0deg);
-    }
-
-    #ribbon {
-        width: 100%;
-        height: 20px;
-        background: linear-gradient(90deg, #ff99cc, #ff66b2);
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 10;
-    }
-
-    #shine {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -75px;
-        width: 50px;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.5);
-        transform: skewX(-20deg);
-        animation: shine 2s ease-in-out forwards;
-    }
-
-    @keyframes shine {
-        0% { left: -75px; }
-        100% { left: 100%; }
-    }
-
-    #longMessage {
-        font-family: Georgia, serif;
-        font-size: 20px;
-        margin: 0;
-        color: #333;
-        text-align: left;
-        white-space: pre-wrap;
-        font-style: italic;
-    }
-
-    #happyBirthday {
-        font-size: 48px;
-        color: #ff3399;
-        margin-top: 20px;
-        transition: transform 1s ease, opacity 1s ease;
-    }
-</style>
-
+        }
+        #cardContainer {
+            display: none;
+            width: 80%;
+            margin: 30px auto;
+            perspective: 1000px;
+        }
+        #card {
+            background: #e6f0fa;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transform-style: preserve-3d;
+            transform: rotateX(90deg);
+            transition: transform 1s ease;
+            overflow: hidden;
+            position: relative;
+            padding: 40px 30px;
+        }
+        #card.open {
+            transform: rotateX(0deg);
+        }
+        #ribbon {
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(90deg, #ff99cc, #ff66b2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        #shine {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75px;
+            width: 50px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: skewX(-20deg);
+            animation: shine 2s ease-in-out forwards;
+        }
+        @keyframes shine {
+            0% { left: -75px; }
+            100% { left: 100%; }
+        }
+        #longMessage {
+            font-family: Georgia, serif;
+            font-size: 20px;
+            margin: 0;
+            color: #1a1a1a;
+            text-align: left;
+            white-space: pre-wrap;
+            font-style: italic;
+        }
+        #happyBirthday {
+            font-size: 48px;
+            color: #ff3399;
+            margin-top: 20px;
+            transition: transform 1s ease, opacity 1s ease;
+        }
+    </style>
 </head>
-<body><audio id="birthdaySong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-
+<body>
+<audio id="birthdaySong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 <div id="message">Make a wish and blow the candle!</div>
 <div id="candle">
     <div id="flame"></div>
 </div>
-
 <div id="cardContainer">
     <div id="card">
         <div id="ribbon">
             <div id="shine"></div>
         </div>
         <div id="longMessage">
-
-Hii — I’m sending this a little late po tonight, hoping not to disturb you on your special day. :› If I did, I’m sorii.. Pero I made a quiet promise to myself to greet you — no matter where we stand now.^
-
-Happy birthday, Kyle. ^^
+Hii — I’m sending this a little late po tonight, hoping not to disturb you on your special day. :› If I did, I’m sorii.. Pero I made a quiet promise to myself to greet you — no matter where we stand now.^Happy birthday, Kyle. ^^
 
 I wish you allll the best — may life place in your hands every dream your heart has ever dared to hold. May you always find the strength to walk through the storms, even when you have to walk alone. Do it for the child within you — the one who once dreamed without fear, who spoke of endless possibilities, and who believed the world was his. :›
 
@@ -136,27 +129,24 @@ And when you finally stand upon the peak of everything you’ve worked for po �
 
 Megan :⟩
 
-(P.S. I hope okay lang siya — I’m still learning to code, heh:).. pero I wanted to make this for you. : ) </div> </div> </div>
+(P.S. I hope okay lang siya — I’m still learning to code, heh:).. pero I wanted to make this for you. : ) </div> </div>
 
+</div>
 <div id="happyBirthday">Happy Birthday, po!:› </div>
-
 <script>
     window.onload = function () {
         const audio = document.getElementById("birthdaySong");
         const message = document.getElementById("message");
         audio.play();
-
         setTimeout(() => {
             message.style.display = "block";
             startMic();
         }, 3000);
     };
-
     function blowCandle() {
         const flame = document.getElementById("flame");
         flame.style.transition = "opacity 2s";
         flame.style.opacity = 0;
-
         setTimeout(() => {
             const card = document.getElementById("cardContainer");
             card.style.display = "block";
@@ -164,7 +154,6 @@ Megan :⟩
                 document.getElementById("card").classList.add("open");
             });
         }, 2000);
-
         setTimeout(() => {
             const happy = document.getElementById("happyBirthday");
             happy.style.display = "block";
@@ -177,7 +166,6 @@ Megan :⟩
             }, 100);
         }, 4000);
     }
-
     function startMic() {
         navigator.mediaDevices.getUserMedia({ audio: true, video: false })
         .then(stream => {
@@ -187,7 +175,6 @@ Megan :⟩
             mic.connect(analyser);
             analyser.fftSize = 256;
             const dataArray = new Uint8Array(analyser.frequencyBinCount);
-
             function detectBlow() {
                 analyser.getByteTimeDomainData(dataArray);
                 let sum = 0;
@@ -210,6 +197,5 @@ Megan :⟩
         });
     }
 </script>
-
 </body>
 </html>
