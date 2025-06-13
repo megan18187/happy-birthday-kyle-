@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday, Kyle!</title>
+    <style>
+        body {
+            background: linear-gradient(to top, #ffe0f0, #fff6f9);
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            padding-top: 50px;
+        }
+        #message, #longMessage, #happyBirthday {
+            display: none;
+        }
+        #candle {
+            width: 60px;
+            height: 200px;
+            background: #ff6666;
+            margin: 40px auto;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        #flame {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #ffff00 20%, #ffa500 60%, transparent 70%);
+            border-radius: 50%;
+            position: absolute;
+            top: -40px;
+            left: 10px;
+            animation: flicker 0.2s infinite;
+        }
+        @keyframes flicker {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        #longMessage {
+            font-family: Georgia, serif;
+            font-size: 20px;
+            margin: 30px 50px;
+            color: #333;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+        #happyBirthday {
+            font-size: 48px;
+            color: #ff3399;
+            margin-top: 20px;
+            transition: transform 1s ease, opacity 1s ease;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background: #ff99cc;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #ff6699;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="birthdaySong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <div id="message">Make a wish and blow the candle!</div>
+    <div id="candle">
+        <div id="flame"></div>
+    </div>
+
+    <div id="longMessage">
+Hi — I’m sending this a little late, hoping not to disturb you on your special day. If I did, I’m truly sorry. Pero I made a quiet promise to myself to greet you — no matter where we stand now.
+
+Happy birthday, Kyle.^
+I wish you alll the best — may life place in your hands every dream your heart has ever dared to hold.
+May you always find the strength to walk through the storms, even when you have to walk alone.
+Do it for the child within you — the one who once dreamed without fear, who spoke of endless possibilities, and who believed the world was his.
+
+Though time has pulled us in different directions, I still carry every moment we shared.
+If it’s alright, let me carry them softly, like fading echoes in my heart, until they become gentle reminders of who we once were.
+
+Congratulations on all that you’ve achieved.
+I know you’re moving forward now, and though my words may be small in your journey, I am deeply grateful.
+Thank you for everything.
+
+This won’t be long — but I read something once that stayed with me. It was from a book I stumbled upon late at night, “The Strength in Our Roots”:
+“Even the strongest trees were once fragile seeds that dared to break through the earth.”
+And I hope you continue to be like that tree — rising, enduring, and reaching for the light no matter how heavy the winds may blow.
+
+And when you finally stand upon the peak of everything you’ve worked for —
+May you find yourself in places where your soul is at peace,
+Surrounded by people who see the rare light within you,
+And held by a love that never asks you to be anything but your truest self.
+
+Happy birthday, Kyle. May your path be nothing short of extraordinary.
+
+— from the one who once stood close, and from afar, will always carry the quiet privilege of having known you.
+
+Megan
+
+(P.S. I hope okay lang siya — I’m still learning to code, heh:).. pero I wanted to make this for you. : )
+    </div>
+
+    <div id="happyBirthday">Happy Birthday, Kyle!</div>
+
+    <script>
+        window.onload = function () {
+            const audio = document.getElementById("birthdaySong");
+            const message = document.getElementById("message");
+            audio.play();
+
+            setTimeout(() => {
+                message.style.display = "block";
+                startMic();
+            }, 3000);
+        };
+
+        function blowCandle() {
+            const flame = document.getElementById("flame");
+            flame.style.transition = "opacity 2s";
+            flame.style.opacity = 0;
+
+            setTimeout(() => {
+                document.getElementById("longMessage").style.display = "block";
+            }, 2000);
+
+            setTimeout(() => {
+                const happy = document.getElementById("happyBirthday");
+                happy.style.display = "block";
+                happy.style.opacity = 0;
+                happy.style.transform = "scale(0.5)";
+                setTimeout(() => {
+                    happy.style.transition = "transform 1s ease, opacity 1s ease";
+                    happy.style.opacity = 1;
+                    happy.style.transform = "scale(1)";
+                }, 100);
+            }, 4000);
+        }
+
+        function startMic() {
+            navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+            .then(stream => {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const mic = audioContext.createMediaStreamSource(stream);
+                const analyser = audioContext.createAnalyser();
+                mic.connect(analyser);
+                analyser.fftSize = 256;
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+                function detectBlow() {
+                    analyser.getByteTimeDomainData(dataArray);
+                    let sum = 0;
+                    for (let i = 0; i < dataArray.length; i++) {
+                        const deviation = dataArray[i] - 128;
+                        sum += deviation * deviation;
+                    }
+                    const volume = Math.sqrt(sum / dataArray.length);
+                    if (volume > 20) {
+                        blowCandle();
+                        stream.getTracks().forEach(track => track.stop());
+                        return;
+                    }
+                    requestAnimationFrame(detectBlow);
+                }
+                detectBlow();
+            })
+            .catch(err => {
+                alert('Microphone access denied. Please allow microphone to blow the candle.');
+            });
+        }
+    </script>
+
+</body>
+</html>
